@@ -11,7 +11,7 @@ function Layout({children} : LayoutProps) {
   return (
     <>
       <Header />
-      <main>(children)</main>
+      <main>{children}</main>
       <Footer />
     </>
   )

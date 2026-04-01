@@ -3,6 +3,7 @@ export type ColorKey = "primary" | "background" | "secondary" | "third" | "borde
 export type HeadingSize = "large" | "medium" | "small";
 export type ButtonSize = "large" | "medium" | "small";
 export type ButtonScheme = "primary" | "normal";
+export type LayoutWidth = "large" | "medium" | "small";
 
 export interface Theme {
   name: ThemeName;
@@ -26,15 +27,20 @@ export interface Theme {
   };
   boarderRadius: {
     default: string;
+  },
+  layout: {
+    width: {
+      [key in LayoutWidth]: string;
+    }
   }
 }
 
 export const light: Theme = {
   name: 'light',
   color: {
-    primary: "brown",
-    background: "lightgray",
-    secondary: "blue",
+    primary: "##ff5800",
+    background: "#f5f5f5",
+    secondary: "lightgrey",
     third: "green",
     border: "grey",
     text: "black"
@@ -76,6 +82,13 @@ export const light: Theme = {
   },
   boarderRadius: {
     default: "4px",
+  },
+  layout: {
+    width: {
+      large: "1200px",
+      medium: "992px",
+      small: "768px"
+    }
   }
 };
 
@@ -126,6 +139,13 @@ export const dark: Theme = {
   },
   boarderRadius: {
     default: "4px",
+  },
+  layout: {
+    width: {
+      large: "1200px",
+      medium: "992px",
+      small: "768px"
+    }
   }
 };
 

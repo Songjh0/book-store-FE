@@ -3,30 +3,17 @@ import ThemeSwitcher from "../header/ThemeSwitcher";
 import logo from "../../assets/images/logo.png";
 import { FaSignInAlt, FaRegUser } from "react-icons/fa"; 
 import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Category } from "../../models/category.model";
+import { fetchCategory } from "../../api/category.api";
+import { useCategory } from "../../hooks/useCategory";
 
 const SignInIcon = FaSignInAlt as any;
 const UserIcon = FaRegUser as any;
 
-const CATEGORY = [
-  {
-    id: 0,
-    name: "전체",
-  },
-  {
-    id: 1,
-    name: "동화", 
-  },
-  {
-    id: 2,
-    name: "소설",
-  },
-  {
-    id: 3,
-    name: "사회",
-  },
-];
-
 function Header() {
+  const { category } = useCategory();
+
   return (
     <HeaderStyle>
       <h1 className="logo">
@@ -37,10 +24,10 @@ function Header() {
       <nav className="category">
         <ul>
           {
-            CATEGORY.map((item) => (
-              <li key={item.id}>
-                <Link to={item.id === null ? '/books' : `/books?category_id=${item.id}`}>
-                  {item.name}
+            category.map((item) => (
+              <li key={item.category_id}>
+                <Link to={item.category_id === null ? '/books' : `/books?category_id=${item.category_id}`}>
+                  {item.category_name}
                 </Link>
               </li>
           ))}

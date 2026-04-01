@@ -1,0 +1,26 @@
+// 데이터를 분리하거나 강화할때 유용하게 사용 = hooks
+import { useEffect, useState } from "react";
+import { Category } from "../models/category.model";
+import { fetchCategory } from "../api/category.api";
+
+export const useCategory = () => {
+  const [category, setCategory] = useState<Category[]>([]);
+
+  useEffect(() => {
+    fetchCategory().then((category) => {
+      if(!category) return;
+
+      const categoryWithAll = [
+        { 
+          category_id: null,
+          category_name: "전체",
+        },
+        ...category,
+      ];
+
+      setCategory(categoryWithAll);
+    });
+  }, []);
+
+  return { category };
+};

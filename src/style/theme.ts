@@ -25,7 +25,7 @@ export interface Theme {
       backgroundColor: string;
     };
   };
-  boarderRadius: {
+  borderRadius: {
     default: string;
   },
   layout: {
@@ -80,7 +80,7 @@ export const light: Theme = {
       backgroundColor: "lightgrey"
     },
   },
-  boarderRadius: {
+  borderRadius: {
     default: "4px",
   },
   layout: {
@@ -137,7 +137,7 @@ export const dark: Theme = {
       backgroundColor: "lightgrey"
     },
   },
-  boarderRadius: {
+  borderRadius: {
     default: "4px",
   },
   layout: {

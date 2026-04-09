@@ -13,7 +13,7 @@ const InputText = React.forwardRef(({ placeholder, inputType, onChange, ...props
 const InputTextStyle = styled.input`
   padding: 0.25rem 0.75rem;
   border: 1px solid ${({ theme }) => theme.color.border};
-  border-radius: ${({ theme }) => theme.boarderRadius.default};
+  border-radius: ${({ theme }) => theme.borderRadius.default};
   font-size: 1rem;
   lline-height: 1.5;
   color: ${({ theme }) => theme.color.text};

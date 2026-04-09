@@ -2,9 +2,36 @@
 import { useEffect, useState } from "react";
 import { Category } from "../models/category.model";
 import { fetchCategory } from "../api/category.api";
+import { useLocation } from "react-router-dom";
 
 export const useCategory = () => {
+  const location = useLocation();
   const [category, setCategory] = useState<Category[]>([]);
+
+  console.log("location", location.search);
+
+  const setActive = () => {
+    const params = new URLSearchParams(location.search);
+    if (params.has("category_id")) {
+      setCategory((prev) => {
+        return prev.map((item) => {
+          return {
+            ...item,
+            isActive: item.category_id === Number(params.get("category_id")),
+          };
+        });
+      });
+    } else {
+      setCategory((prev) => {
+        return prev.map((item) => {
+          return {
+            ...item,
+            isActive: false,
+          };
+        });
+      });
+    }
+  };
 
   useEffect(() => {
     fetchCategory().then((category) => {
@@ -21,6 +48,10 @@ export const useCategory = () => {
       setCategory(categoryWithAll);
     });
   }, []);
+
+  useEffect(() => {
+    setActive();
+  }, [location.search]);
 
   return { category };
 };

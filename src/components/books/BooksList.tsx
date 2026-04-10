@@ -36,8 +36,8 @@ interface BooksListStyleProps {
 }
 
 const BooksListStyle = styled.div<BooksListStyleProps>`
-  dispaly: grid;
-  grid-templete-columns: ${({ view }) => (view === 'grid' ? "repeat(4, 1fr)" : "repeat(1, 1fr)")}
+  display: grid;
+  grid-template-columns: ${({ view }) => (view === 'grid' ? "repeat(4, 1fr)" : "repeat(1, 1fr)")}
   gap: 24px
 `;
 
